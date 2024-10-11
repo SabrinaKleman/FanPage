@@ -53,14 +53,25 @@ body {
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 10px; /* Space below the image */
 }
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+  .centered-image {
+    max-width: 100%; /* Adjust the width to 90% */
+    max-height: 100%; /* Adjust the height to 90% */
+  }
+  .hero-button {
+    max-width: 100%; /* Adjust the width to 90% */
+    max-height: 100%; /* Adjust the height to 90% */
+  }
+}
 
 /* Bottom Image Container */
 .bottom-image-container {
   position: absolute;
   bottom: 0;
   right: 0; /* Initially aligned to the bottom-right corner */
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 60%;
+  max-height: 60%;
   padding: 0;
   display: flex;
   justify-content: flex-end; /* Keep it aligned to the right */
@@ -72,8 +83,8 @@ body {
 .bottom-image {
   width: auto;
   height: auto;
-  max-height: 50%; /* Keep aspect ratio */
-  max-width: 60%;
+  max-height: 80%; /* Keep aspect ratio */
+  max-width: 50%;
   object-fit: contain; /* Keep aspect ratio intact */
 }
 
@@ -92,10 +103,17 @@ body {
 /* Responsive behavior without animation */
 @media (max-width: 768px) {
   .bottom-image-container {
-    justify-content: center; /* Center the image horizontally on small screens */
-    right: 50%; /* Align to the center horizontally */
+    justify-content: center; /* Center the image horizontally on smaller screens */
+    right: 50%; /* Align horizontally */
     transform: translateX(50%); /* Center horizontally */
     animation: none; /* No animation when screen is resized */
+    max-width: 90%; /* Increase width for smaller screens */
+    max-height: 90%; /* Increase height for smaller screens */
+  }
+
+  .bottom-image {
+    max-width: 100%; /* Adjust the width to 90% */
+    max-height: 100%; /* Adjust the height to 90% */
   }
 }
 
@@ -116,7 +134,7 @@ body {
   background-color: #491DCE;       /* Background color */
   color: white;                     /* Text color */
 border-width: 5px;
-border-color: rgba(245, 83, 2, 0.50);
+border-color: rgba(245, 83, 2, 0.90);
 filter: drop-shadow(5px 6px 0px #491DCE) drop-shadow(-5px -6px 0px #491DCE);                     /* Remove border */
   padding: 15px 30px;              /* Padding around the button */
   font-size: 1.2rem;                /* Font size */
