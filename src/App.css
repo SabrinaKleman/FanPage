@@ -5,25 +5,42 @@
   box-sizing: border-box;
 }
 
-/* Hero Section */
-.hero {
-  background-image: url('./images/hero.png'); /* Add your background image URL */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   height: 100vh;
+  background-image: url('./images/hero.png'); /* Background image */
   background-size: cover;
   background-position: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content at the top */
+  align-items: center; /* Center items horizontally */
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('./images/hero.png'); /* Add your background image URL */
+  min-height: 100vh; /* Cover the whole viewport height */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: flex-start; /* Align items towards the top */
+  align-items: flex-start; /* Align items to the top vertically */
   text-align: center;
+  padding-top: 20px; /* Add padding to give some space at the top */
 }
 
 .hero-content {
   color: white;
-  position: relative; /* Allow children to be positioned relative to this container */
-  z-index: 2; /* Ensure content is above the background */
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center children horizontally */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Make sure content stays at the top */
+  max-width: 100%; /* Ensure image is responsive */
+  margin-top: 0; /* Remove any margin at the top */
+  padding: 20px; /* Adjust padding for responsiveness */
 }
 
 .hero h1 {
@@ -32,10 +49,57 @@
 
 /* Centered Image */
 .centered-image {
-  max-width: 80%; /* Set width to 80% of the hero section */
+   max-width: 70%; /* Set width to 80% of the hero section */
   height: auto; /* Maintain aspect ratio */
-  margin-bottom: 20px; /* Space below the image */
+  margin-bottom: 10px; /* Space below the image */
 }
+
+/* Bottom Image Container */
+.bottom-image-container {
+  position: absolute;
+  bottom: 0;
+  right: 0; /* Initially aligned to the bottom-right corner */
+  max-width: 50%;
+  max-height: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end; /* Keep it aligned to the right */
+  align-items: flex-end; /* Keep it aligned to the bottom */
+  animation: shoot-up 1s ease-out forwards; /* Apply shooting up animation */
+}
+
+/* Bottom Image */
+.bottom-image {
+  width: auto;
+  height: auto;
+  max-height: 50%; /* Keep aspect ratio */
+  max-width: 60%;
+  object-fit: contain; /* Keep aspect ratio intact */
+}
+
+/* Shoot-up animation */
+@keyframes shoot-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%); /* Start from below the screen */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Settle into the bottom-right position */
+  }
+}
+
+/* Responsive behavior without animation */
+@media (max-width: 768px) {
+  .bottom-image-container {
+    justify-content: center; /* Center the image horizontally on small screens */
+    right: 50%; /* Align to the center horizontally */
+    transform: translateX(50%); /* Center horizontally */
+    animation: none; /* No animation when screen is resized */
+  }
+}
+
+
 .telegram-text {
   color: #FFF; /* Text color */
   text-align: center; /* Center text */
@@ -62,6 +126,9 @@ filter: drop-shadow(5px 6px 0px #491DCE) drop-shadow(-5px -6px 0px #491DCE);    
   margin-top: 20px;                 /* Top margin */
   transform: skew(-21deg);           /* Skew the button */
   overflow: hidden;                 /* Ensure image doesn't overflow */
+  opacity: 0; /* Initially invisible */
+  animation: fade-in 1s ease-out forwards; /* Fade-in animation */
+  animation-delay: 2s; /* Delayed after bottom image floats in */
 }
 
 .button-icon {
@@ -69,6 +136,17 @@ filter: drop-shadow(5px 6px 0px #491DCE) drop-shadow(-5px -6px 0px #491DCE);    
   height: 20px;                     /* Set height for the icon */
   width: auto;                      /* Maintain aspect ratio */
 }
+
+/* Button Fade-in Animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero h1 {
