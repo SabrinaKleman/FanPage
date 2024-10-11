@@ -3,6 +3,7 @@ import './App.css';  // Import custom styles
 import repeatTextImg from './images/repeatText.png'; // Adjust your import paths
 import telegramIcon from './images/telegram.png';
 import iphoneImage from './images/phone.png'; // Ensure this matches the correct file name
+import ctaButtonSvg from './images/ctaButton_responsive.svg'; // Import your SVG
 
 function App() {
   return (
@@ -14,8 +15,7 @@ function App() {
 
           {/* Button with image */}
           <button className="hero-button">
-            <img src={telegramIcon} alt="Telegram Icon" className="button-icon" />
-            GOT GAME?
+            <img src={ctaButtonSvg} alt="CTA Button" className="button-icon" />
           </button>
           
           {/* Text below the button */}

@@ -21,15 +21,14 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: url('./images/hero.png'); /* Add your background image URL */
   min-height: 100vh; /* Cover the whole viewport height */
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: flex-start; /* Align items towards the top */
   align-items: flex-start; /* Align items to the top vertically */
   text-align: center;
   padding-top: 20px; /* Add padding to give some space at the top */
+  position: relative; /* Position the hero section */
+  z-index: 10; /* Ensure hero content is above the bottom image */
 }
 
 .hero-content {
@@ -37,10 +36,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Make sure content stays at the top */
+  justify-content: flex-start; /* Keep content at the top */
   max-width: 100%; /* Ensure image is responsive */
-  margin-top: 0; /* Remove any margin at the top */
   padding: 20px; /* Adjust padding for responsiveness */
+  z-index: 10; /* Keep content above the bottom image */
 }
 
 .hero h1 {
@@ -49,20 +48,9 @@ body {
 
 /* Centered Image */
 .centered-image {
-   max-width: 70%; /* Set width to 80% of the hero section */
+  max-width: 70%; /* Set width to 70% of the hero section */
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 10px; /* Space below the image */
-}
-/* Responsive behavior for smaller screens */
-@media (max-width: 768px) {
-  .centered-image {
-    max-width: 100%; /* Adjust the width to 90% */
-    max-height: 100%; /* Adjust the height to 90% */
-  }
-  .hero-button {
-    max-width: 100%; /* Adjust the width to 90% */
-    max-height: 100%; /* Adjust the height to 90% */
-  }
 }
 
 /* Bottom Image Container */
@@ -76,6 +64,7 @@ body {
   display: flex;
   justify-content: flex-end; /* Keep it aligned to the right */
   align-items: flex-end; /* Keep it aligned to the bottom */
+  z-index: 1; /* Set the image behind the hero content */
   animation: shoot-up 1s ease-out forwards; /* Apply shooting up animation */
 }
 
@@ -100,62 +89,45 @@ body {
   }
 }
 
-/* Responsive behavior without animation */
+/* Responsive behavior for smaller screens */
 @media (max-width: 768px) {
+  .centered-image {
+    max-width: 100%; /* Adjust the width to 100% */ 
+    min-height: 80%;
+  }
+
   .bottom-image-container {
-    justify-content: center; /* Center the image horizontally on smaller screens */
-    right: 50%; /* Align horizontally */
+    justify-content: center; /* Center the image on smaller screens */
     transform: translateX(50%); /* Center horizontally */
-    animation: none; /* No animation when screen is resized */
-    max-width: 90%; /* Increase width for smaller screens */
-    max-height: 90%; /* Increase height for smaller screens */
+    min-width: 50%; /* Increase width for smaller screens */
+    max-height: 70%; /* Increase height for smaller screens */
   }
 
   .bottom-image {
-    max-width: 100%; /* Adjust the width to 90% */
-    max-height: 100%; /* Adjust the height to 90% */
+    min-width: 100%; /* Adjust width */
+    height: auto; /* Adjust height */
   }
 }
 
-
-.telegram-text {
-  color: #FFF; /* Text color */
-  text-align: center; /* Center text */
-  font-family: "PP Monument Extended", sans-serif; /* Font family */
-  font-size: 16px; /* Font size */
-  font-style: normal; /* Font style */
-  font-weight: 800; /* Font weight */
-  line-height: normal; /* Line height */
-  margin-top: 20px; /* Margin above the text */
-}
+/* Button */
 .hero-button {
-  display: flex;                     /* Align items in a row */
-  align-items: center;              /* Center the items vertically */
-  background-color: #491DCE;       /* Background color */
-  color: white;                     /* Text color */
-border-width: 5px;
-border-color: rgba(245, 83, 2, 0.90);
-filter: drop-shadow(5px 6px 0px #491DCE) drop-shadow(-5px -6px 0px #491DCE);                     /* Remove border */
-  padding: 15px 30px;              /* Padding around the button */
-  font-size: 1.2rem;                /* Font size */
-  font-family: "PP Monument Extended", sans-serif; /* Font family */    
-  font-weight: bold;                /* Bold text */
-  cursor: pointer;                  /* Change cursor to pointer */
-  margin-top: 20px;                 /* Top margin */
-  transform: skew(-21deg);           /* Skew the button */
-  overflow: hidden;                 /* Ensure image doesn't overflow */
-  opacity: 0; /* Initially invisible */
-  animation: fade-in 1s ease-out forwards; /* Fade-in animation */
-  animation-delay: 2s; /* Delayed after bottom image floats in */
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: none; /* Remove background */
+  border: none; /* Remove borders */
+  cursor: pointer; /* Pointer cursor on hover */
+  opacity: 0; /* Initially hidden */
+  animation: fade-in 1s ease-out forwards; /* Apply fade-in animation */
+  animation-delay: 1.5s; /* Start animation after 1.5 seconds */
 }
 
+/* Button Icon */
 .button-icon {
-  margin-right: 10px;               /* Space between image and text */
-  height: 20px;                     /* Set height for the icon */
-  width: auto;                      /* Maintain aspect ratio */
+  height: auto;
+  width: 100%; /* Ensure the SVG scales responsively */
 }
 
-/* Button Fade-in Animation */
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -163,6 +135,16 @@ filter: drop-shadow(5px 6px 0px #491DCE) drop-shadow(-5px -6px 0px #491DCE);    
   100% {
     opacity: 1;
   }
+}
+
+/* Text below button */
+.telegram-text {
+  color: #FFF; /* Text color */
+  text-align: center; /* Center text */
+  font-family: "PP Monument Extended", sans-serif; /* Font family */
+  font-size: 16px; /* Font size */
+  font-weight: 800; /* Bold */
+  margin-top: 20px; /* Margin above the text */
 }
 
 /* Responsive Design */
@@ -174,5 +156,4 @@ filter: drop-shadow(5px 6px 0px #491DCE) drop-shadow(-5px -6px 0px #491DCE);    
     font-size: 1rem;
     padding: 10px 20px;
   }
-
 }
