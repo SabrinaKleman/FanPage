@@ -36,6 +36,13 @@
   margin-top: 20px;
 }
 
+.centered-image {
+  display: block;          /* Makes the image a block element */
+  margin: 20px auto;     /* Centers the image horizontally */
+  max-width: 100%;       /* Responsive */
+  height: auto;          /* Maintains aspect ratio */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero h1 {
