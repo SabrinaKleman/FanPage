@@ -19,30 +19,56 @@
 
 .hero-content {
   color: white;
+  position: relative; /* Allow children to be positioned relative to this container */
+  z-index: 2; /* Ensure content is above the background */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
 }
 
 .hero h1 {
   font-size: 3rem;
 }
 
-.hero-button {
-  padding: 15px 30px;
-  background-color: #ff4500;
-  color: white;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
+/* Centered Image */
 .centered-image {
-  display: block;          /* Makes the image a block element */
-  margin: 20px auto;     /* Centers the image horizontally */
-  max-width: 100%;       /* Responsive */
-  height: auto;          /* Maintains aspect ratio */
+  max-width: 80%; /* Set width to 80% of the hero section */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Space below the image */
+}
+.telegram-text {
+  color: #FFF; /* Text color */
+  text-align: center; /* Center text */
+  font-family: "PP Monument Extended", sans-serif; /* Font family */
+  font-size: 16px; /* Font size */
+  font-style: normal; /* Font style */
+  font-weight: 800; /* Font weight */
+  line-height: normal; /* Line height */
+  margin-top: 20px; /* Margin above the text */
+}
+.hero-button {
+  display: flex;                     /* Align items in a row */
+  align-items: center;              /* Center the items vertically */
+  background-color: #491DCE;       /* Background color */
+  color: white;                     /* Text color */
+border-width: 5px;
+border-color: rgba(245, 83, 2, 0.50);
+filter: drop-shadow(5px 6px 0px #491DCE) drop-shadow(-5px -6px 0px #491DCE);                     /* Remove border */
+  padding: 15px 30px;              /* Padding around the button */
+  font-size: 1.2rem;                /* Font size */
+  font-family: "PP Monument Extended", sans-serif; /* Font family */    
+  font-weight: bold;                /* Bold text */
+  cursor: pointer;                  /* Change cursor to pointer */
+  margin-top: 20px;                 /* Top margin */
+  transform: skew(-21deg);           /* Skew the button */
+  overflow: hidden;                 /* Ensure image doesn't overflow */
 }
 
+.button-icon {
+  margin-right: 10px;               /* Space between image and text */
+  height: 20px;                     /* Set height for the icon */
+  width: auto;                      /* Maintain aspect ratio */
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero h1 {
@@ -52,4 +78,5 @@
     font-size: 1rem;
     padding: 10px 20px;
   }
+
 }
