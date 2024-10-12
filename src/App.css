@@ -6,7 +6,7 @@
 }
 
 body {
-  margin: 0;
+  margin-left: 10px;
   padding: 0;
   box-sizing: border-box;
   height: 100vh;
@@ -14,18 +14,18 @@ body {
   background-size: cover;
   background-position: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack items vertically */
   justify-content: flex-start; /* Align content at the top */
   align-items: center; /* Center items horizontally */
 }
 
 /* Hero Section */
 .hero {
-  min-height: 100vh; /* Cover the whole viewport height */
+  flex: 0 0 75%; /* Take up 75% of the viewport height */
   display: flex;
-  justify-content: flex-start; /* Align items towards the top */
+  justify-content: flex-start; /* Align items towards the left */
   align-items: flex-start; /* Align items to the top vertically */
-  text-align: center;
+  text-align: left; /* Start with left-aligned text */
   padding-top: 20px; /* Add padding to give some space at the top */
   position: relative; /* Position the hero section */
   z-index: 10; /* Ensure hero content is above the bottom image */
@@ -35,45 +35,127 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Align content to the left for larger screens */
   justify-content: flex-start; /* Keep content at the top */
   max-width: 100%; /* Ensure image is responsive */
   padding: 20px; /* Adjust padding for responsiveness */
   z-index: 10; /* Keep content above the bottom image */
 }
-
-.hero h1 {
-  font-size: 3rem;
+/* Styling for the h2 and h1 elements */
+.hero-content h2 {
+  font-size: 3rem; /* Adjust font size for larger screens */
+  margin-bottom: 10px; /* 20px below the h2 */
+  font-family: "PP Monument Extended", sans-serif;
+  font-size: 110px;
+  font-weight: 800;
 }
 
-/* Centered Image */
-.centered-image {
-  max-width: 70%; /* Set width to 70% of the hero section */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Space below the image */
+.hero-content h1 {
+  font-size: 4rem; /* Adjust font size for larger screens */
+  margin-top: 10px; /* 20px above the h1 */
+  font-family: "PP Monument Extended", sans-serif;
+  font-size: 120px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+/* Grouped game images (stacked vertically) */
+.game-images {
+  display: flex;
+  flex-direction: column; /* Stack the images vertically */
+  align-items: left; /* Center the images */
+  width: 50%; /* Set the responsive width to match the original image */
+  height: auto;
+}
+
+.game-image {
+  width: 90%; /* Responsive width */
+  height: auto;
+  opacity: 0; /* Hidden by default */
+  animation: fadeInVertical 1s ease-out forwards; /* Fade in animation */
+}
+
+.game1 {
+  animation-delay: 0.4s; /* Game1 fades in first */
+}
+.game2 {
+  animation-delay: .7s; /* Game2 fades in after Game1 */
+}
+.game3 {
+  animation-delay: 1.0s; /* Game3 fades in after Game2 */
+  margin-bottom: -5%;
+}
+.game4 {
+  animation-delay: 1.3s; /* Game4 fades in after Game3 */
+  margin-bottom: -3%;
+}
+
+/* Fade in with upward motion */
+@keyframes fadeInVertical {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Slight upward movement */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Settle in place */
+  }
+}
+
+.hero-button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: none; /* Remove background */
+  border: none; /* Remove borders */
+  cursor: pointer; /* Pointer cursor on hover */
+  opacity: 0; /* Initially hidden */
+  animation: zoomIn .5s ease-out forwards; /* Change to zoom-in animation */
+  animation-delay: 1.5s; /* Starts after all images have loaded */
+}
+
+/* Zoom-in animation */
+@keyframes zoomIn {
+  0% {
+    opacity: 0; /* Start fully transparent */
+    transform: scale(0.5); /* Start at half size */
+  }
+  100% {
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* End at full size */
+  }
+}
+
+/* Text below button */
+.telegram-text {
+  color: #FFF;
+  text-align: center;
+  font-family: "PP Monument Extended", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 20px;
 }
 
 /* Bottom Image Container */
 .bottom-image-container {
   position: absolute;
-  bottom: 0;
-  right: 0; /* Initially aligned to the bottom-right corner */
-  max-width: 60%;
-  max-height: 60%;
-  padding: 0;
+  bottom: 0; /* Keep it anchored to the bottom */
+  right: 0; /* Align to the bottom right */
+  margin-right: 20px;
+  width: auto; /* Full width for responsiveness */
+  height: auto; /* Allow it to take up to 40% of the viewport height on larger screens */
   display: flex;
-  justify-content: flex-end; /* Keep it aligned to the right */
-  align-items: flex-end; /* Keep it aligned to the bottom */
+  justify-content: flex-end; /* Initially align the image to the right */
+  align-items: flex-end; /* Align the image to the bottom */
   z-index: 1; /* Set the image behind the hero content */
-  animation: shoot-up 1s ease-out forwards; /* Apply shooting up animation */
+  animation: shoot-up 1.5s ease-out forwards; /* Apply shooting up animation */
 }
 
 /* Bottom Image */
 .bottom-image {
   width: auto;
   height: auto;
-  max-height: 80%; /* Keep aspect ratio */
-  max-width: 50%;
+  max-height: 50%; /* Keep aspect ratio */
+  max-width: 32%;
   object-fit: contain; /* Keep aspect ratio intact */
 }
 
@@ -85,75 +167,169 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateY(0); /* Settle into the bottom-right position */
+    transform: translateY(0); /* Settle into the bottom right position */
   }
 }
 
-/* Responsive behavior for smaller screens */
+/* Responsive behavior for common device sizes */
+@media (max-width: 1440px) { /* Desktop (large) */
+  .hero p {
+    font-size: 1rem; /* Slightly smaller font size */
+  }
+  .game-images{
+    max-width: 80%; /* Adjust width for tablet */
+  }
+}
+
+@media (max-width: 1024px) { /* Tablet */
+  
+  .hero {
+    justify-content: center; /* Center content on smaller screens */
+    text-align: center; /* Center text on smaller screens */
+  }
+  
+  .hero-content {
+    align-items: center; /* Center content on smaller screens */
+  }
+  .hero p {
+    font-size: 1rem; /* Adjust font size for tablets */
+  }
+    .hero-content h2 {
+  margin-bottom: 10px; /* 20px below the h2 */
+  font-family: "PP Monument Extended", sans-serif;
+font-size: 4rem; /* Adjust font size for smaller screens */
+  font-weight: 800;
+}
+
+.hero-content h1 {
+  margin-top: 10px; /* 20px above the h1 */
+  font-family: "PP Monument Extended", sans-serif;
+font-size: 4rem; /* Adjust font size for smaller screens */
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+  .hero-button {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .game-images {
+    max-width: 70%; /* Adjust width for tablet */
+  }
+  .bottom-image-container {
+    max-height: 40%; /* Adjust height to half of the original */
+    overflow: hidden; /* Hide the overflow part of the image */
+    position: relative; /* Ensure proper positioning for child elements */
+    display: flex; /* Keep display flex for centering */
+    justify-content: center; /* Center the bottom image horizontally */
+    align-items: flex-end; /* Align the image to the bottom */
+    margin: 0 auto; /* Center the container itself */
+  }
+  .bottom-image {
+    min-width: 80%; /* Ensure the image covers the container */
+    height: auto; /* Maintain aspect ratio */
+    object-position: top; /* Aligns the image to show the top part */
+  }
+}
+
 @media (max-width: 768px) {
-  .centered-image {
-    max-width: 100%; /* Adjust the width to 100% */ 
-    min-height: 80%;
+  .hero {
+    justify-content: center; /* Center content on smaller screens */
+    text-align: center; /* Center text on smaller screens */
+  }
+  
+  .hero-content {
+    align-items: center; /* Center content on smaller screens */
+  }
+  .hero-content h2 {
+  margin-bottom: 5px; /* 20px below the h2 */
+  font-family: "PP Monument Extended", sans-serif;
+font-size: 4rem; /* Adjust font size for smaller screens */
+  font-weight: 800;
+}
+
+.hero-content h1 {
+  margin-top: 5px; /* 20px above the h1 */
+  font-family: "PP Monument Extended", sans-serif;
+font-size: 4rem; /* Adjust font size for smaller screens */
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+  .hero p {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+     .hero-button {
+    max-height: 50px;
+  }
+
+  .game-images {
+    min-width: 80%; /* Adjust the width to 100% */
   }
 
   .bottom-image-container {
-    justify-content: center; /* Center the image on smaller screens */
-    transform: translateX(50%); /* Center horizontally */
-    min-width: 50%; /* Increase width for smaller screens */
-    max-height: 70%; /* Increase height for smaller screens */
+    max-height: 40%; /* Adjust height to half of the original */
+    overflow: hidden; /* Hide the overflow part of the image */
+    position: relative; /* Ensure proper positioning for child elements */
+    display: flex; /* Keep display flex for centering */
+    justify-content: center; /* Center the bottom image horizontally */
+    align-items: flex-end; /* Align the image to the bottom */
+    margin: 0 auto; /* Center the container itself */
   }
-
+  
   .bottom-image {
-    min-width: 100%; /* Adjust width */
-    height: auto; /* Adjust height */
+    min-width: 80%; /* Ensure the image covers the container */
+    height: auto; /* Maintain aspect ratio */
+    object-position: top; /* Aligns the image to show the top part */
   }
 }
 
-/* Button */
-.hero-button {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  background: none; /* Remove background */
-  border: none; /* Remove borders */
-  cursor: pointer; /* Pointer cursor on hover */
-  opacity: 0; /* Initially hidden */
-  animation: fade-in 1s ease-out forwards; /* Apply fade-in animation */
-  animation-delay: 1.5s; /* Start animation after 1.5 seconds */
-}
-
-/* Button Icon */
-.button-icon {
-  height: auto;
-  width: 100%; /* Ensure the SVG scales responsively */
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
+@media (max-width: 500px) { /* Small mobile */
+  .hero {
+    justify-content: center; /* Center content on smaller screens */
+    text-align: center; /* Center text on smaller screens */
   }
-  100% {
-    opacity: 1;
+  
+  .hero-content {
+    align-items: center; /* Center content on smaller screens */
   }
+  .hero-content h2 {
+  margin-bottom: 1px; /* 20px below the h2 */
+  font-family: "PP Monument Extended", sans-serif;
+font-size: 4rem; /* Adjust font size for smaller screens */
+  font-weight: 800;
 }
 
-/* Text below button */
-.telegram-text {
-  color: #FFF; /* Text color */
-  text-align: center; /* Center text */
-  font-family: "PP Monument Extended", sans-serif; /* Font family */
-  font-size: 16px; /* Font size */
-  font-weight: 800; /* Bold */
-  margin-top: 20px; /* Margin above the text */
+.hero-content h1 {
+  margin-top: 1px; /* 20px above the h1 */
+  font-family: "PP Monument Extended", sans-serif;
+font-size: 4rem; /* Adjust font size for smaller screens */
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
+  .hero p {
+    font-size: 1rem; /* Further adjust for smaller devices */
   }
-  .hero-button {
-    font-size: 1rem;
-    padding: 10px 20px;
+    .hero-button {
+    max-height: 40px;
+  }
+
+  .game-images {
+    max-width: 100%; /* Adjust width for tablet */
+  }
+   .bottom-image-container {
+    max-height: 40%; /* Adjust height to half of the original */
+    overflow: hidden; /* Hide the overflow part of the image */
+    position: relative; /* Ensure proper positioning for child elements */
+    display: flex; /* Keep display flex for centering */
+    justify-content: center; /* Center the bottom image horizontally */
+    align-items: flex-end; /* Align the image to the bottom */
+    margin: 0 auto; /* Center the container itself */
+  }
+  
+  .bottom-image {
+    min-width: 80%; /* Ensure the image covers the container */
+    height: auto; /* Maintain aspect ratio */
+    object-position: top; /* Aligns the image to show the top part */
   }
 }
