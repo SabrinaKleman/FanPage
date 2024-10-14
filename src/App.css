@@ -71,21 +71,21 @@ body {
   width: 90%; /* Responsive width */
   height: auto;
   opacity: 0; /* Hidden by default */
-  animation: fadeInVertical 1s ease-out forwards; /* Fade in animation */
+  animation: fadeInVertical .8s ease-out forwards; /* Fade in animation */
 }
 
 .game1 {
   animation-delay: 0.4s; /* Game1 fades in first */
 }
 .game2 {
-  animation-delay: .7s; /* Game2 fades in after Game1 */
+  animation-delay: 0.6s; /* Game2 fades in after Game1 */
 }
 .game3 {
-  animation-delay: 1.0s; /* Game3 fades in after Game2 */
+  animation-delay: 0.8s; /* Game3 fades in after Game2 */
   margin-bottom: -5%;
 }
 .game4 {
-  animation-delay: 1.3s; /* Game4 fades in after Game3 */
+  animation-delay: 1s; /* Game4 fades in after Game3 */
   margin-bottom: -3%;
 }
 
@@ -133,6 +133,9 @@ body {
   font-size: 16px;
   font-weight: 800;
   margin-top: 20px;
+  opacity: 0; /* Initially hidden */
+  animation: zoomIn .5s ease-out forwards; /* Change to zoom-in animation */
+  animation-delay: 1.5s; /* Starts after all images have loaded */
 }
 
 /* Bottom Image Container */
@@ -140,7 +143,8 @@ body {
   position: absolute;
   bottom: 0; /* Keep it anchored to the bottom */
   right: 0; /* Align to the bottom right */
-  margin-right: 20px;
+  margin-right: 60px;
+  margin-bottom: -150px;
   width: auto; /* Full width for responsiveness */
   height: auto; /* Allow it to take up to 40% of the viewport height on larger screens */
   display: flex;
@@ -148,6 +152,8 @@ body {
   align-items: flex-end; /* Align the image to the bottom */
   z-index: 1; /* Set the image behind the hero content */
   animation: shoot-up 1.5s ease-out forwards; /* Apply shooting up animation */
+  animation-delay: 2s; /* Starts after all images have loaded */
+  opacity: 0;
 }
 
 /* Bottom Image */
