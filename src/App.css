@@ -6,7 +6,6 @@
 }
 
 body {
-  margin-left: 10px;
   padding: 0;
   box-sizing: border-box;
   height: 100vh;
@@ -21,6 +20,7 @@ body {
 
 /* Hero Section */
 .hero {
+  margin-left: 40px;
   flex: 0 0 75%; /* Take up 75% of the viewport height */
   display: flex;
   justify-content: flex-start; /* Align items towards the left */
