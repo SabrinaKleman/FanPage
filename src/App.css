@@ -169,7 +169,7 @@ body {
 @keyframes shoot-up {
   0% {
     opacity: 0;
-    transform: translateY(100%); /* Start from below the screen */
+    transform: translateY(90%); /* Start from below the screen */
   }
   100% {
     opacity: 1;
@@ -192,6 +192,7 @@ body {
   .hero {
     justify-content: center; /* Center content on smaller screens */
     text-align: center; /* Center text on smaller screens */
+    margin-left: 0px;
   }
   
   .hero-content {
@@ -241,6 +242,7 @@ font-size: 4rem; /* Adjust font size for smaller screens */
   .hero {
     justify-content: center; /* Center content on smaller screens */
     text-align: center; /* Center text on smaller screens */
+    margin-left: 0px;
   }
   
   .hero-content {
@@ -293,6 +295,7 @@ font-size: 4rem; /* Adjust font size for smaller screens */
   .hero {
     justify-content: center; /* Center content on smaller screens */
     text-align: center; /* Center text on smaller screens */
+    margin-left: 0px;
   }
   
   .hero-content {

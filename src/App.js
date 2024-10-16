@@ -5,7 +5,8 @@ import game2 from './images/Game2.png';
 import game3 from './images/Game3.png';
 import game4 from './images/Game4.png';
 import telegramIcon from './images/telegram.png';
-import iphoneImage from './images/phone1.png'; // Ensure this matches the correct file name
+import Image from 'mui-image'
+import iphoneImage from './images/phone.png'; // Ensure this matches the correct file name
 import iphoneVideo from './images/phone.mp4';
 import ctaButtonSvg from './images/ctaButton_responsive.svg'; // Import your SVG
 
@@ -16,7 +17,6 @@ function App() {
         <div className="hero-content">
           {/* h2 above the game images */}
           <h2>IT'S</h2>
-
           {/* Grouped images */}
           <div className="game-images">
             <img src={game4} alt="Game 4" className="game-image game4" />
@@ -38,12 +38,9 @@ function App() {
         </div>
       </header>
 
-       {/* Bottom iPhone video */}
+       {/* Bottom image*/}
       <div className="bottom-image-container">
-        <video className="bottom-image" autoPlay loop muted>
-          <source src={iphoneVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <img src={iphoneImage} alt="iPhone" className="bottom-image" />
       </div>
     </div>
   );
