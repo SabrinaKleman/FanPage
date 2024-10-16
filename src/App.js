@@ -5,7 +5,6 @@ import game2 from './images/Game2.png';
 import game3 from './images/Game3.png';
 import game4 from './images/Game4.png';
 import telegramIcon from './images/telegram.png';
-import Image from 'mui-image'
 import iphoneImage from './images/phone.png'; // Ensure this matches the correct file name
 import iphoneVideo from './images/phone.mp4';
 import ctaButtonSvg from './images/ctaButton_responsive.svg'; // Import your SVG
@@ -37,7 +36,6 @@ function App() {
           <p className="telegram-text">PLAY NOW ON TELEGRAM</p>
         </div>
       </header>
-
        {/* Bottom image*/}
       <div className="bottom-image-container">
         <img src={iphoneImage} alt="iPhone" className="bottom-image" />

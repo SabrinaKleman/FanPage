@@ -1,4 +1,16 @@
 /* Global Styles */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    background-color: black;
+  }
+  100% {
+    opacity: 1;
+    background-color: transparent;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +24,7 @@ body {
   background-image: url('./images/hero.png'); /* Background image */
   background-size: cover;
   background-position: center;
+  animation: fadeIn 3s ease-in-out forwards;
   display: flex;
   flex-direction: column; /* Stack items vertically */
   justify-content: flex-start; /* Align content at the top */
